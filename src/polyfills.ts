@@ -77,3 +77,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+/** Phaser 3 **/
+import { environment } from './environments/environment';
+environment.production ? require('phaser/dist/phaser.min') : require('phaser/dist/phaser');
