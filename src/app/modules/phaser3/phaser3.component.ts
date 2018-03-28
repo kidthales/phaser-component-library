@@ -1,3 +1,5 @@
+/// <reference path="../../../phaser.d.ts" />
+
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 /**
