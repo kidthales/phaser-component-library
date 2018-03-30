@@ -1,5 +1,3 @@
-/// <reference path="../../../phaser.d.ts" />
-
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 /**
@@ -12,9 +10,9 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 })
 export class Phaser3Component implements AfterViewInit, OnInit {
   /**
-   * Game configuration input.
+   * Game configuration input. Note that 'parent' configuration property is ignored.
    */
-  @Input() public gameConfig: GameConfig;
+  @Input() public gameConfig: any;
 
   /**
    * Game ready output - emits game instance.
@@ -24,12 +22,12 @@ export class Phaser3Component implements AfterViewInit, OnInit {
   /**
    * Phaser module reference.
    */
-  @Input() public Phaser: Phaser;
+  @Input() public Phaser: any;
 
   /**
    * Game reference.
    */
-  private game: Phaser.Game;
+  private game: any;
 
   /**
    * Instantiate Phaser 3 component.
@@ -45,7 +43,7 @@ export class Phaser3Component implements AfterViewInit, OnInit {
     this.game.events.once('ready', () => {
       this.elementRef.nativeElement.appendChild(this.game.canvas);
       this.elementRef.nativeElement.style.overflow = 'hidden';
-      this.gameReady.emit(this.game as any);
+      this.gameReady.emit(this.game);
     });
   }
 
@@ -53,15 +51,15 @@ export class Phaser3Component implements AfterViewInit, OnInit {
    * Lifecycle hook that is called after data-bound properties of a directive are initialized.
    */
   public ngOnInit(): void {
-    // If Phaser module not provided try global/window object...
-    const PhaserModule = this.Phaser || Phaser;
+    // If Phaser module not provided try window object...
+    const PhaserModule = this.Phaser || window['Phaser'];
 
     if (!PhaserModule) {
-      throw new ReferenceError('`Phaser` not found.');
-    } else if (!(PhaserModule as any).Game) {
-      throw new ReferenceError('`Phaser.Game` not found.');
+      throw new ReferenceError('Phaser not found.');
+    } else if (!PhaserModule.Game) {
+      throw new ReferenceError('Phaser.Game not found.');
     }
 
-    this.game = new (PhaserModule as any).Game(this.gameConfig);
+    this.game = new PhaserModule.Game(this.gameConfig);
   }
 }

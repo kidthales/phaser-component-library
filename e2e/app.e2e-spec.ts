@@ -1,14 +1,14 @@
 import { AppPage } from './app.po';
 
-describe('phaser3-component-library App', () => {
+describe('phaser-component-library Example App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have Phaser canvas', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getPhaserCanvas()).toBeTruthy();
   });
 });

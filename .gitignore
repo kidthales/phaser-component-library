@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/.ng_pkg_build
+/example-app
 /dist
 /dist-server
 /dist.tgz
@@ -28,10 +28,13 @@
 !.vscode/extensions.json
 
 # misc
+/.ng_pkg_build
 /.sass-cache
 /connect.lock
 /coverage
+/doc
 /libpeerconnection.log
+.coveralls.yml
 npm-debug.log
 yarn-error.log
 testem.log

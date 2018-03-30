@@ -3,23 +3,59 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Phaser3Component } from './phaser3.component';
 
 describe('Phaser3Component', () => {
-  let component: Phaser3Component;
-  let fixture: ComponentFixture<Phaser3Component>;
+  const PhaserBak = window['Phaser'];
+
+  afterAll(() => window['Phaser'] = PhaserBak);
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ Phaser3Component ]
-    })
-    .compileComponents();
+    TestBed.configureTestingModule({ declarations: [Phaser3Component] }).compileComponents();
+    window['Phaser'] = PhaserBak;
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(Phaser3Component);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+  it('should instantiate', async(() => {
+    const fixture = TestBed.createComponent(Phaser3Component);
+    const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
-  });
+  }));
+
+  it('should instantiate Phaser.Game instance, on init', async(() => {
+    const fixture = TestBed.createComponent(Phaser3Component);
+    const component = fixture.debugElement.componentInstance;
+    component.Phaser = window['Phaser'];
+    spyOn(component.Phaser, 'Game');
+    component.ngOnInit();
+    expect(component.Phaser.Game).toHaveBeenCalled();
+  }));
+
+  it('should append canvas & emit `gameReady` event, after view init', async(() => {
+    const fixture = TestBed.createComponent(Phaser3Component);
+    const component = fixture.debugElement.componentInstance;
+    component.ngOnInit();
+    fixture.whenRenderingDone().then(() => {
+      spyOn(component.gameReady, 'emit');
+      component.ngAfterViewInit();
+      // Kind of hacky but game ready event occurs sometime after view init.
+      setTimeout(() => {
+        expect(component.gameReady).toHaveBeenCalled();
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('canvas')).toBeTruthy();
+      }, 1500);
+    });
+  }));
+
+  it('should throw reference error if Phaser not found', async(() => {
+    const fixture = TestBed.createComponent(Phaser3Component);
+    const component = fixture.debugElement.componentInstance;
+    window['Phaser'] = undefined;
+    component.Phaser = undefined;
+    expect(() => component.ngOnInit()).toThrow(new ReferenceError('Phaser not found.'));
+  }));
+
+  it('should throw reference error if Phaser.Game not found', async(() => {
+    const fixture = TestBed.createComponent(Phaser3Component);
+    const component = fixture.debugElement.componentInstance;
+    window['Phaser'] = undefined;
+    component.Phaser = {};
+    expect(() => component.ngOnInit()).toThrow(new ReferenceError('Phaser.Game not found.'));
+  }));
 });

@@ -1,35 +1,64 @@
 {
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "phaser3-component-library",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha",
   "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "packagr": "ng-packagr -p ng-package.json"
+  "description": "Phaser 3 component for Angular.",
+  "author": "Tristan Bonsor <tristan.bonsor@gmail.com> (https://tristanbonsor.github.io)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TristanBonsor/phaser3-component-library.git"
   },
-  "private": true,
+  "homepage": "https://github.com/TristanBonsor/phaser3-component-library#readme",
+  "bugs": {
+    "url": "https://github.com/TristanBonsor/phaser3-component-library/issues"
+  },
+  "scripts": {
+    "build": "npm run build:doc && npm run build:example && npm run build:package",
+    "build:doc": "npm run typedoc -- --options typedoc.json ./src/app/modules",
+    "build:example": "npm run ng -- build --prod",
+    "build:package": "npm run ng-packagr -- -p package.json && cd dist && npm pack",
+    "ci:coveralls": "npm run shx -- cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js",
+    "ci:travis": "npm run lint && npm run test:coverage",
+    "clean": "npm run clean:coverage && npm run clean:doc && npm run clean:example && npm run clean:package",
+    "clean:coverage": "npm run shx -- rm -rf coverage",
+    "clean:doc": "npm run shx -- rm -rf doc",
+    "clean:example": "npm run shx -- rm -rf example-app",
+    "clean:npm": "npm cache clean --force && npm run shx -- rm -rf node_modules && npm set progress=false && npm install",
+    "clean:package": "npm run shx -- rm -rf dist dist.tgz",
+    "concurrently": "concurrently",
+    "e2e": "npm run ng -- e2e",
+    "lint": "npm run ng -- lint",
+    "ng": "ng",
+    "ng-packagr": "ng-packagr",
+    "prebuild": "npm run clean && npm run lint && npm run test:coverage && npm run e2e",
+    "serve": "npm run ng -- serve",
+    "shx": "shx",
+    "start": "npm run concurrently -- \"npm run test\" \"npm run serve\"",
+    "test": "npm run ng -- test",
+    "test:coverage": "npm run test:single-run -- --code-coverage",
+    "test:single-run": "npm run test -- --single-run",
+    "typedoc": "typedoc"
+  },
+  "peerDependencies": {
+    "@angular/core": "^5.0.0",
+    "phaser": "^3.0.0"
+  },
   "devDependencies": {
-    "@angular/animations": "^5.2.0",
     "@angular/cli": "~1.7.2",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/core": "^5.2.0",
-    "@angular/forms": "^5.2.0",
-    "@angular/http": "^5.2.0",
-    "@angular/language-service": "^5.2.0",
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
-    "@angular/router": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
+    "concurrently": "^3.5.1",
     "core-js": "^2.4.1",
+    "coveralls": "^3.0.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -41,14 +70,18 @@
     "phaser": "^3.3.0",
     "protractor": "~5.1.2",
     "rxjs": "^5.5.6",
+    "shx": "^0.2.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typedoc": "^0.11.1",
     "typescript": "~2.5.3",
     "zone.js": "^0.8.19"
   },
-  "peerDependencies": {
-    "@angular/core": "^5.0.0",
-    "phaser": "^3.0.0"
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/app/modules/index.ts",
+      "comments": "none",
+      "licensePath": "LICENSE"
+    }
   }
 }
