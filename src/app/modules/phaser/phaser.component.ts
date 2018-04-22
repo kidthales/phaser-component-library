@@ -1,14 +1,14 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 /**
- * Phaser 3 component.
+ * Phaser component.
  */
 @Component({
   // tslint:disable component-selector
-  selector: 'phaser3-component',
+  selector: 'phaser-component',
   template: ``
 })
-export class Phaser3Component implements AfterViewInit, OnInit {
+export class PhaserComponent implements AfterViewInit, OnInit {
   /**
    * Game configuration input. Note that 'parent' configuration property is ignored.
    */
@@ -30,7 +30,7 @@ export class Phaser3Component implements AfterViewInit, OnInit {
   private game: any;
 
   /**
-   * Instantiate Phaser 3 component.
+   * Instantiate Phaser component.
    *
    * @param elementRef Reference to host element.
    */

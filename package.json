@@ -1,17 +1,17 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
-  "name": "phaser3-component-library",
+  "name": "phaser-component-library",
   "version": "0.1.0-alpha",
   "license": "MIT",
-  "description": "Phaser 3 component for Angular.",
+  "description": "Phaser component for Angular.",
   "author": "Tristan Bonsor <tristan.bonsor@gmail.com> (https://tristanbonsor.github.io)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TristanBonsor/phaser3-component-library.git"
+    "url": "https://github.com/TristanBonsor/phaser-component-library.git"
   },
-  "homepage": "https://github.com/TristanBonsor/phaser3-component-library#readme",
+  "homepage": "https://github.com/TristanBonsor/phaser-component-library#readme",
   "bugs": {
-    "url": "https://github.com/TristanBonsor/phaser3-component-library/issues"
+    "url": "https://github.com/TristanBonsor/phaser-component-library/issues"
   },
   "scripts": {
     "build": "npm run build:doc && npm run build:example && npm run build:package",

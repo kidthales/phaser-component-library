@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Phaser3Component } from './phaser3.component';
+import { PhaserComponent } from './phaser.component';
 
-describe('Phaser3Component', () => {
+describe('PhaserComponent', () => {
   const PhaserBak = window['Phaser'];
 
   afterAll(() => window['Phaser'] = PhaserBak);
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({ declarations: [Phaser3Component] }).compileComponents();
+    TestBed.configureTestingModule({ declarations: [PhaserComponent] }).compileComponents();
     window['Phaser'] = PhaserBak;
   }));
 
   it('should instantiate', async(() => {
-    const fixture = TestBed.createComponent(Phaser3Component);
+    const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   }));
 
   it('should instantiate Phaser.Game instance, on init', async(() => {
-    const fixture = TestBed.createComponent(Phaser3Component);
+    const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     component.Phaser = window['Phaser'];
     spyOn(component.Phaser, 'Game');
@@ -28,7 +28,7 @@ describe('Phaser3Component', () => {
   }));
 
   it('should append canvas & emit `gameReady` event, after view init', async(() => {
-    const fixture = TestBed.createComponent(Phaser3Component);
+    const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     component.ngOnInit();
     fixture.whenRenderingDone().then(() => {
@@ -44,7 +44,7 @@ describe('Phaser3Component', () => {
   }));
 
   it('should throw reference error if Phaser not found', async(() => {
-    const fixture = TestBed.createComponent(Phaser3Component);
+    const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     window['Phaser'] = undefined;
     component.Phaser = undefined;
@@ -52,7 +52,7 @@ describe('Phaser3Component', () => {
   }));
 
   it('should throw reference error if Phaser.Game not found', async(() => {
-    const fixture = TestBed.createComponent(Phaser3Component);
+    const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     window['Phaser'] = undefined;
     component.Phaser = {};
