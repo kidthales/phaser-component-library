@@ -30,14 +30,15 @@ describe('PhaserComponent', () => {
   it('should append canvas & emit `gameReady` event, after view init', async(() => {
     const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
-    // const spy = spyOn(component.gameReady, 'emit');
+    const spy = spyOn(component.gameReady, 'emit');
     component.ngOnInit();
+    component.ngAfterViewInit();
     fixture.whenRenderingDone().then(() => {
-      const spy = spyOn(component.gameReady, 'emit');
-      component.ngAfterViewInit();
+      // const spy = spyOn(component.gameReady, 'emit');
+      // component.ngAfterViewInit();
       // Kind of hacky but game ready event occurs sometime after view init.
       setTimeout(() => {
-        // expect(component.gameReady.emit).toHaveBeenCalled();
+        expect(component.gameReady.emit).toHaveBeenCalled();
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('canvas')).toBeTruthy();
       }, 1500);
