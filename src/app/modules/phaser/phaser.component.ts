@@ -44,6 +44,7 @@ export class PhaserComponent implements AfterViewInit, OnInit {
       this.elementRef.nativeElement.appendChild(this.game.canvas);
       this.elementRef.nativeElement.style.overflow = 'hidden';
       this.gameReady.emit(this.game);
+      console.log('ready');
     });
   }
 

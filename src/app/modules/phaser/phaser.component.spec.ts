@@ -5,14 +5,7 @@ import { PhaserComponent } from './phaser.component';
 describe('PhaserComponent', () => {
   const PhaserBak = window['Phaser'];
 
-  const timeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-
-  afterAll(() => {
-    window['Phaser'] = PhaserBak;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = timeout;
-  });
+  afterAll(() => window['Phaser'] = PhaserBak);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({ declarations: [PhaserComponent] }).compileComponents();
