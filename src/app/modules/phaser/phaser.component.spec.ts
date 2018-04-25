@@ -27,7 +27,7 @@ describe('PhaserComponent', () => {
     expect(component.Phaser.Game).toHaveBeenCalled();
   }));
 
-  it('should append canvas & emit `gameReady` event, after view init', async((done) => {
+  it('should append canvas & emit `gameReady` event, after view init', async(() => {
     const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     component.ngOnInit();
@@ -39,7 +39,6 @@ describe('PhaserComponent', () => {
         expect(spy).toHaveBeenCalled();
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('canvas')).toBeTruthy();
-        done();
       }, 1500);
     });
   }));
