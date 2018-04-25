@@ -17,7 +17,7 @@ export class AppComponent {
    */
   public readonly config = {
     title: 'Phaser Component Library',
-    version: '0.1.0-alpha',
+    version: '1.0.0',
     type: Phaser.AUTO,
     pixelArt: true,
     width: window.innerWidth,
@@ -30,7 +30,7 @@ export class AppComponent {
   public readonly phaser = Phaser;
 
   /**
-   * Instantiate scene service.
+   * Instantiate application component.
    *
    * @param sceneService Scene service.
    */
