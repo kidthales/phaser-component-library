@@ -32,11 +32,11 @@ describe('PhaserComponent', () => {
     const component = fixture.debugElement.componentInstance;
     component.ngOnInit();
     fixture.whenRenderingDone().then(() => {
-      spyOn(component.gameReady, 'emit');
+      const spy = spyOn(component.gameReady, 'emit');
       component.ngAfterViewInit();
       // Kind of hacky but game ready event occurs sometime after view init.
       setTimeout(() => {
-        expect(component.gameReady).toHaveBeenCalled();
+        expect(spy).toHaveBeenCalled();
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('canvas')).toBeTruthy();
       }, 1500);
