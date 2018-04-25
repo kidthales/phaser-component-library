@@ -34,7 +34,7 @@ describe('PhaserComponent', () => {
     component.ngOnInit();
     fixture.whenRenderingDone().then(() => {
       const spy = spyOn(component.gameReady, 'emit');
-      // component.ngAfterViewInit();
+      component.ngAfterViewInit();
       // Kind of hacky but game ready event occurs sometime after view init.
       setTimeout(() => {
         // expect(component.gameReady.emit).toHaveBeenCalled();
