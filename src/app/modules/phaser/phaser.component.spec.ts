@@ -30,6 +30,7 @@ describe('PhaserComponent', () => {
   it('should append canvas & emit `gameReady` event, after view init', async(() => {
     const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
+    component.test = 'ready2';
     component.ngOnInit();
     fixture.whenRenderingDone().then(() => {
       const spy = spyOn(component.gameReady, 'emit');

@@ -36,6 +36,8 @@ export class PhaserComponent implements AfterViewInit, OnInit {
    */
   public constructor(private elementRef: ElementRef) { }
 
+  public test = 'ready';
+
   /**
    * Lifecycle hook that is called after a component's view has been fully initialized.
    */
@@ -44,7 +46,7 @@ export class PhaserComponent implements AfterViewInit, OnInit {
       this.elementRef.nativeElement.appendChild(this.game.canvas);
       this.elementRef.nativeElement.style.overflow = 'hidden';
       this.gameReady.emit(this.game);
-      console.log('ready');
+      console.log(this.test);
     });
   }
 
