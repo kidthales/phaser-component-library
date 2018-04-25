@@ -1,6 +1,6 @@
 # Phaser Component Library
 
-[![Build Status](https://travis-ci.org/TristanBonsor/phaser-component-library.svg?branch=master)](https://travis-ci.org/TristanBonsor/phaser-component-library)
+[![Build Status](https://travis-ci.org/TristanBonsor/phaser-component-library.svg?branch=develop)](https://travis-ci.org/TristanBonsor/phaser-component-library)
 [![Coverage Status](https://coveralls.io/repos/github/TristanBonsor/phaser-component-library/badge.svg?branch=master)](https://coveralls.io/github/TristanBonsor/phaser-component-library?branch=develop)
 
 Phaser component for Angular. The purpose of this library is to provide a simple way to integrate Phaser 3 into an Angular project in an agnostic fashion.
@@ -82,7 +82,7 @@ export class AppComponent {
 }
 ```
 
-Please refer to the example [AppComponent](https://github.com/TristanBonsor/phaser-component-library/blob/master/src/app/app.component.ts) to see the full sample usage.
+Please refer to the example [AppComponent](https://github.com/TristanBonsor/phaser-component-library/blob/develop/src/app/app.component.ts) to see the full sample usage.
 
 ## API
 
@@ -114,7 +114,7 @@ Run `npm test` to execute the unit tests for the library (watch mode); use `npm 
 
 Run `npm run e2e` to execute the end-to-end tests for the example app.
 
-Refer to the project's [package.json](https://github.com/TristanBonsor/phaser-component-library/blob/master/package.json) `scripts` property for more commands.
+Refer to the project's [package.json](https://github.com/TristanBonsor/phaser-component-library/blob/develop/package.json) `scripts` property for more commands.
 
 ## License
 
