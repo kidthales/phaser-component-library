@@ -1,1 +1,1 @@
-export * from './phaser3/phaser3.module';
+export * from './phaser/phaser.module';

@@ -35,9 +35,9 @@ class AppModule {}
 Template usage:
 
 ```html
-<phaser3-component (gameReady)="onGameReady($event)" [gameConfig]="config" [Phaser]="phaser">
+<phaser-component (gameReady)="onGameReady($event)" [gameConfig]="config" [Phaser]="phaser">
   <!-- Phaser's HTMLCanvasElement will reside here... -->
-</phaser3-component>
+</phaser-component>
 ```
 
 Component usage:

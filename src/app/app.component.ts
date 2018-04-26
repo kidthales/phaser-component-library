@@ -7,7 +7,7 @@ import { SceneService } from './scene.service';
  */
 @Component({
   selector: 'app-root',
-  template: `<phaser3-component (gameReady)="onGameReady($event)" [gameConfig]="config" [Phaser]="phaser"></phaser3-component>`,
+  template: `<phaser-component (gameReady)="onGameReady($event)" [gameConfig]="config" [Phaser]="phaser"></phaser-component>`,
   styles: [],
   providers: [SceneService]
 })
