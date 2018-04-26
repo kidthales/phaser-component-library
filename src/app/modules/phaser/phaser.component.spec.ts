@@ -43,6 +43,21 @@ describe('PhaserComponent', () => {
     }, 1500);
   });
 
+  it('should destroy game instance, on destroy', (done) => {
+    const fixture = TestBed.createComponent(PhaserComponent);
+    const component = fixture.debugElement.componentInstance;
+    component.Phaser = window['Phaser'];
+    component.ngOnInit();
+    component.ngAfterViewInit();
+    // Kind of hacky but game ready event occurs sometime after view init.
+    setTimeout(() => {
+      spyOn(component.game, 'destroy');
+      component.ngOnDestroy();
+      expect(component.game.destroy).toHaveBeenCalled();
+      done();
+    }, 1500);
+  });
+
   it('should throw reference error if Phaser not found', async(() => {
     const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;

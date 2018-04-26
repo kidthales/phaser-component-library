@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { PhaserComponent } from './phaser.component';
 
 /**
- * Phaser module.
+ * Phaser module. Exports [PhaserComponent]{@link PhaserComponent}.
  */
 @NgModule({
   declarations: [PhaserComponent],
