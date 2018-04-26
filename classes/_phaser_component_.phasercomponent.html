@@ -934,6 +934,9 @@ img { max-width: 100%; }
 					<a href="_phaser_component_.phasercomponent.html#ngafterviewinit" class="tsd-kind-icon">ng<wbr>After<wbr>View<wbr>Init</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_phaser_component_.phasercomponent.html#ngondestroy" class="tsd-kind-icon">ng<wbr>OnDestroy</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="_phaser_component_.phasercomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a>
 				</li>
 			</ul>
@@ -945,7 +948,7 @@ img { max-width: 100%; }
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
 				<div class="lead">
-					<p>Phaser component.</p>
+					<p>Phaser component. Instantiates a Phaser game instance and contains the corresponding HTMLCanvasElement.</p>
 				</div>
 			</div>
 		</section>
@@ -961,6 +964,7 @@ img { max-width: 100%; }
 			<h3>Implements</h3>
 			<ul class="tsd-hierarchy">
 				<li><span class="tsd-signature-type">AfterViewInit</span></li>
+				<li><span class="tsd-signature-type">OnDestroy</span></li>
 				<li><span class="tsd-signature-type">OnInit</span></li>
 			</ul>
 		</section>
@@ -988,6 +992,7 @@ img { max-width: 100%; }
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_phaser_component_.phasercomponent.html#ngafterviewinit" class="tsd-kind-icon">ng<wbr>After<wbr>View<wbr>Init</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_phaser_component_.phasercomponent.html#ngondestroy" class="tsd-kind-icon">ng<wbr>OnDestroy</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_phaser_component_.phasercomponent.html#ngoninit" class="tsd-kind-icon">ng<wbr>OnInit</a></li>
 						</ul>
 					</section>
@@ -1020,7 +1025,8 @@ img { max-width: 100%; }
 								<h5>elementRef: <span class="tsd-signature-type">ElementRef</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<div class="lead">
-										<p>Reference to host element.</p>
+										<p>Reference to host element. Corresponding native element will act as parent to Phaser&#39;s HTMLCanvasElement&#39;s DOM
+										element.</p>
 									</div>
 								</div>
 							</li>
@@ -1043,7 +1049,7 @@ img { max-width: 100%; }
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Phaser module reference.</p>
+						<p>Phaser module reference. This should provide access to the Phaser API.</p>
 					</div>
 				</div>
 			</section>
@@ -1053,12 +1059,13 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">element<wbr>Ref<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ElementRef</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/TristanBonsor/phaser-component-library/blob/f80cc95/src/app/modules/phaser/phaser.component.ts#L37">phaser.component.ts:37</a></li>
+						<li>Defined in <a href="https://github.com/TristanBonsor/phaser-component-library/blob/f80cc95/src/app/modules/phaser/phaser.component.ts#L38">phaser.component.ts:38</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Reference to host element.</p>
+						<p>Reference to host element. Corresponding native element will act as parent to Phaser&#39;s HTMLCanvasElement&#39;s DOM
+						element.</p>
 					</div>
 				</div>
 			</section>
@@ -1073,7 +1080,7 @@ img { max-width: 100%; }
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Game reference.</p>
+						<p>Phaser game reference. Instantiated in [ngOnInit]{@link PhaserComponent#ngOnInit}.</p>
 					</div>
 				</div>
 			</section>
@@ -1088,7 +1095,7 @@ img { max-width: 100%; }
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Game configuration input. Note that &#39;parent&#39; configuration property is ignored.</p>
+						<p>Phaser game configuration input. Note that the &#39;parent&#39; configuration property is ignored.</p>
 					</div>
 				</div>
 			</section>
@@ -1103,7 +1110,7 @@ img { max-width: 100%; }
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Game ready output - emits game instance.</p>
+						<p>Game ready output - emits the Phaser game instance when it is ready and this component&#39;s view has initialized .</p>
 					</div>
 				</div>
 			</section>
@@ -1120,12 +1127,35 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/TristanBonsor/phaser-component-library/blob/f80cc95/src/app/modules/phaser/phaser.component.ts#L42">phaser.component.ts:42</a></li>
+								<li>Defined in <a href="https://github.com/TristanBonsor/phaser-component-library/blob/f80cc95/src/app/modules/phaser/phaser.component.ts#L44">phaser.component.ts:44</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Lifecycle hook that is called after a component&#39;s view has been fully initialized.</p>
+								<p>Lifecycle hook that is called after a component&#39;s view has been fully initialized. Attaches Phaser game&#39;s HTMLCanvasElement to DOM when
+								game ready.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="ngondestroy" class="tsd-anchor"></a>
+				<h3>ng<wbr>OnDestroy</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">ng<wbr>OnDestroy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/TristanBonsor/phaser-component-library/blob/f80cc95/src/app/modules/phaser/phaser.component.ts#L56">phaser.component.ts:56</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Lifecycle hook that is called when a directive, pipe or service is destroyed. Destroys Phaser game instance.</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1142,12 +1172,12 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/TristanBonsor/phaser-component-library/blob/f80cc95/src/app/modules/phaser/phaser.component.ts#L53">phaser.component.ts:53</a></li>
+								<li>Defined in <a href="https://github.com/TristanBonsor/phaser-component-library/blob/f80cc95/src/app/modules/phaser/phaser.component.ts#L65">phaser.component.ts:65</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Lifecycle hook that is called after data-bound properties of a directive are initialized.</p>
+								<p>Lifecycle hook that is called after data-bound properties of a directive are initialized. Instantiates Phaser game instance.</p>
 							</div>
 						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
