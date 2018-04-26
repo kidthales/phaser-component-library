@@ -1,7 +1,7 @@
 # Phaser Component Library
 
 [![Build Status](https://travis-ci.org/TristanBonsor/phaser-component-library.svg?branch=develop)](https://travis-ci.org/TristanBonsor/phaser-component-library)
-[![Coverage Status](https://coveralls.io/repos/github/TristanBonsor/phaser-component-library/badge.svg?branch=master)](https://coveralls.io/github/TristanBonsor/phaser-component-library?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/TristanBonsor/phaser-component-library/badge.svg?branch=develop)](https://coveralls.io/github/TristanBonsor/phaser-component-library?branch=develop)
 
 Phaser component for Angular. The purpose of this library is to provide a simple way to integrate Phaser 3 into an Angular project in an agnostic fashion.
 
