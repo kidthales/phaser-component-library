@@ -40,6 +40,7 @@ describe('PhaserComponent', () => {
       // component.ngAfterViewInit();
       // Kind of hacky but game ready event occurs sometime after view init.
       setTimeout(() => {
+        console.log('blam');
         expect(component.gameReady.emit).toHaveBeenCalled();
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('canvas')).toBeTruthy();
