@@ -27,29 +27,23 @@ describe('PhaserComponent', () => {
     expect(component.Phaser.Game).toHaveBeenCalled();
   }));
 
-  it('should append canvas & emit `gameReady` event, after view init', /*async(*/(done) => {
+  it('should append canvas & emit `gameReady` event, after view init', (done) => {
     const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     component.Phaser = window['Phaser'];
     spyOn(component.gameReady, 'emit');
     component.ngOnInit();
     component.ngAfterViewInit();
-    // fixture.whenRenderingDone().then(() => {
-      console.log('test');
-      // const spy = spyOn(component.gameReady, 'emit');
-      // component.ngAfterViewInit();
-      // Kind of hacky but game ready event occurs sometime after view init.
-      setTimeout(() => {
-        console.log(done);
-        expect(component.gameReady.emit).toHaveBeenCalled();
-        const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('canvas')).toBeTruthy();
-        done();
-      }, 1500);
-    // });
-  })/*)*/;
+    // Kind of hacky but game ready event occurs sometime after view init.
+    setTimeout(() => {
+      expect(component.gameReady.emit).toHaveBeenCalled();
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('canvas')).toBeTruthy();
+      done();
+    }, 1500);
+  });
 
-  /*it('should throw reference error if Phaser not found', async(() => {
+  it('should throw reference error if Phaser not found', async(() => {
     const fixture = TestBed.createComponent(PhaserComponent);
     const component = fixture.debugElement.componentInstance;
     window['Phaser'] = undefined;
@@ -63,5 +57,5 @@ describe('PhaserComponent', () => {
     window['Phaser'] = undefined;
     component.Phaser = {};
     expect(() => component.ngOnInit()).toThrow(new ReferenceError('Phaser.Game not found.'));
-  }));*/
+  }));
 });
