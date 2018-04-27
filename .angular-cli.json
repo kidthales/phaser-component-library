@@ -57,6 +57,7 @@
     "styleExt": "scss",
     "component": {
       "inlineStyle": true,
-      "inlineTemplate": true}
+      "inlineTemplate": true
+    }
   }
 }
