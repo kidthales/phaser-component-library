@@ -5,6 +5,6 @@ export class AppPage {
     return browser.get('/');
   }
   getPhaserCanvas() {
-    return element(by.css('app-root phaser3-component canvas'));
+    return element(by.css('app-root phaser-component canvas'));
   }
 }
