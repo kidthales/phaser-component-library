@@ -39,6 +39,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/src/phaser.d.ts
 
 # e2e
 /e2e/*.js
